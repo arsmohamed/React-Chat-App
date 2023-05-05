@@ -1,8 +1,15 @@
+import axios from 'axios';
+
 const AuthPage = (props) => {
     const onSubmit = (e) => {
       e.preventDefault();
       const { value } = e.target[0];
-      props.onAuth({ username: value, secret: value });
+      axios.post(
+        "http://localhost:3001/authenticate",
+        {username: value}
+      )
+      .then(res => props.onAuth({ ...res.data, secret: value }))
+      .catch( err => console.log('error is ', err))
     };
   
     return (
