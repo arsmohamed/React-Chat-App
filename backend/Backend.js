@@ -14,12 +14,12 @@ app.post("/authenticate", async (req, res) => {
       { username: username, secret: username, first_name: username },
       { headers: {"private-key": "ea592bca-e6e9-4376-bcf7-ea5d0cf12ece"}}
     )
-    console.log(res.status(r.status).json(r.data))
+    // console.log(res.status(r.status).json(r.data))
     return res.status(r.status).json(r.data)
   } catch(e) {
-    console.log(res.status(e.response.status).json(e.response.data))
+    console.log(res.status(e.response).json(e.response.data))
     return res.status(e.response.status).json(e.response.data)
   }
 });
 
-app.listen(3000);
+app.listen(3001);
